@@ -24,38 +24,46 @@ class Game {
         System.out.println();
     }
 
-    void setPlayerDice() {
+    private void setPlayerDice() {
         for (int i = 0; i < Main.numbersOfPlayer; i++) {
-            player[i].setUefaDice((int) (Math.random() * 3));
+            if (player[i].isInGame())
+                player[i].setUefaDice((int) (Math.random() * 3));
         }
     }
 
-    void showPlayerDice() {
+    private void showPlayerDice() {
         System.out.println("Игроки кидают пальцы ");
         for (int i = 0; i < Main.numbersOfPlayer; i++) {
-            System.out.print("'" + player[i].getNamePlayer() + "'" + "\t");
-            System.out.println("'" + player[i].getUefaDice() + "'" + "\t");
+            if (player[i].isInGame()) {
+                System.out.print("'" + player[i].getNamePlayer() + "'" + "\t");
+                System.out.println("'" + player[i].getUefaDice() + "'" + "\t");
+            }
         }
     }
 
     void whoIsWin() {
         int winners = 0;
-        while (winners != 1){
+        while (winners != 1) {
+            System.out.println("###############################");
+            setPlayerDice();
+            showPlayerDice();
             int st = 0;
             int kn = 0;
             int pap = 0;
             for (int i = 0; i < Main.numbersOfPlayer; i++) {
                 {
-                    switch (player[i].getUefaDice()) {
-                        case "stone":
-                            st += 1;
-                            break;
-                        case "knife":
-                            kn += 1;
-                            break;
-                        case "papper":
-                            pap += 1;
-                            break;
+                    if (player[i].isInGame()) {
+                        switch (player[i].getUefaDice()) {
+                            case "stone":
+                                st += 1;
+                                break;
+                            case "knife":
+                                kn += 1;
+                                break;
+                            case "papper":
+                                pap += 1;
+                                break;
+                        }
                     }
                 }
             }
@@ -64,16 +72,22 @@ class Game {
                     "\tKnife: " + kn +
                     "\tPapper: " + pap);
 
-            if ((st > 0 && kn > 0 && pap > 0) || (st > 0 && kn == 0 && pap == 0) || (st == 0 && kn > 0 && pap == 0) || (st == 0 && kn == 0 && pap > 0)){
+            if ((st > 0 && kn > 0 && pap > 0) || (st > 0 && kn == 0 && pap == 0) || (st == 0 && kn > 0 && pap == 0) || (st == 0 && kn == 0 && pap > 0)) {
                 System.out.println("Ничия, играем дальше!");
-                setPlayerDice();
-            }
-            else {
-                System.out.println("Определяем победителя дальше!");
+            } else {
                 winners = countWinners(st, kn, pap);
-
+                if (winners != 1) {
+                    System.out.println("Определяем победителя дальше!");
+                    System.out.println("Количество играющих дальше: " + winners);
+                }
             }
-            System.out.println("Количество победителей: " + winners);
+            if (winners == 1) {
+                System.out.println("Победитель определен!");
+                for (int i = 0; i < Main.numbersOfPlayer; i++) {
+                    if (player[i].isInGame())
+                        System.out.println("Победитель - " + player[i].getNamePlayer() + " !");
+                }
+            }
         }
     }
 
@@ -106,5 +120,4 @@ class Game {
         }
         return winners;
     }
-
 }

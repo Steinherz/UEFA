@@ -16,8 +16,6 @@ public class Main {
 
         game.initPlayers();
         game.showPlayers();
-        game.setPlayerDice();
-        game.showPlayerDice();
         game.whoIsWin();
 
 
