@@ -16,6 +16,14 @@ class Game {
         }
     }
 
+    void initPlayersAuto() {                                                        //Автоматическа генерация имени игрока
+        for (int i = 0; i < Main.numbersOfPlayer; i++) {
+            player[i] = new Player();
+            player[i].setNumberOf(i + 1);
+            player[i].setNamePlayer("Player " + (i + 1));
+        }
+    }
+
     void showPlayers() {                                        //Показываем имена игроков
         System.out.println("Игроки принимающие участие:");
         for (int i = 0; i < Main.numbersOfPlayer; i++) {
@@ -73,7 +81,7 @@ class Game {
                     "\tKnife: " + kn +
                     "\tPapper: " + pap);
 
-            //дальше условие на ничию: когда показаны все "фигуры" или только 1 "фигура"
+            //дальше условие на ничию: когда показаны все "фигуры" или только 1 "фигура" у всех игроков
             if ((st > 0 && kn > 0 && pap > 0) || (st > 0 && kn == 0 && pap == 0) || (st == 0 && kn > 0 && pap == 0) || (st == 0 && kn == 0 && pap > 0)) {
                 System.out.println("Ничия, играем дальше!");
             } else {

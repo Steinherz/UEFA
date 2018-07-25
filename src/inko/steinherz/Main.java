@@ -15,7 +15,8 @@ public class Main {
         if (numbersOfPlayer > 1) {
             Game game = new Game();
 
-            game.initPlayers();            //Запуск метода в котором даем имена игрокам
+            //game.initPlayers();          //Запуск метода в котором даем имена игрокам
+            game.initPlayersAuto();        //Запуск метода в котором автоматически задаются имена игрокам
             game.showPlayers();            // Показ всех игроков
             game.whoIsWin();               // Определение победителя
         } else {
