@@ -68,7 +68,7 @@ class Game {
                     }
                 }
             }
-            System.out.println("Что выкинули игроки: ");
+            System.out.println("Что показали игроки: ");
             System.out.println("Stone: " + st +
                     "\tKnife: " + kn +
                     "\tPapper: " + pap);
