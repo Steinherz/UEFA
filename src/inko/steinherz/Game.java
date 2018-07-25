@@ -42,9 +42,9 @@ class Game {
     }
 
     void whoIsWin() {
-        int round = 1;                      //счетчик количества раундов
-        int winners = 0;                    //счетчик победителей
-        while (winners != 1) {              //Работа всего говнокода пока не будет 1 победитель
+        int round = 1;                          //счетчик количества раундов
+        int winners = 0;                        //счетчик победителей
+        while (winners != 1 && round != 1000) { //Работа всего говнокода пока не будет 1 победитель и, для отлова глюка, до 1000 раундов
             System.out.println("########### Раунд № " + round + " ###########");
             setPlayerDice();                //Вызов метода задающий рандомно что показали игроки
             showPlayerDice();               //Вызов метода что показали игроки
@@ -98,21 +98,21 @@ class Game {
         int winners = 0;
         if (st > 0 && kn > 0) {
             for (int i = 0; i < Main.numbersOfPlayer; i++) {
-                if (player[i].getUefaDice().equals("stone")) {
+                if (player[i].getUefaDice().equals("stone") && player[i].isInGame()) {
                     //player[i].setInGame(true);
                     winners += 1;
                 } else player[i].setInGame(false);
             }
         } else if (st > 0 && pap > 0) {
             for (int i = 0; i < Main.numbersOfPlayer; i++) {
-                if (player[i].getUefaDice().equals("papper")) {
+                if (player[i].getUefaDice().equals("papper") && player[i].isInGame()) {
                     //player[i].setInGame(true);
                     winners += 1;
                 } else player[i].setInGame(false);
             }
         } else if (pap > 0 && kn > 0) {
             for (int i = 0; i < Main.numbersOfPlayer; i++) {
-                if (player[i].getUefaDice().equals("knife")) {
+                if (player[i].getUefaDice().equals("knife") && player[i].isInGame()) {
                     //player[i].setInGame(true);
                     winners += 1;
                 } else player[i].setInGame(false);
