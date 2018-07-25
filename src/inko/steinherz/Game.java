@@ -94,8 +94,11 @@ class Game {
             if (winners == 1) {                             // если победитель остался один, выводим его на экран и завершается while
                 System.out.println("Победитель определен!");
                 for (int i = 0; i < Main.numbersOfPlayer; i++) {
-                    if (player[i].isInGame())
-                        System.out.println("Победитель - " + player[i].getNamePlayer() + " !");
+                    if (player[i].isInGame()) {
+                        System.out.println("===> Победитель - " + player[i].getNamePlayer() + "! <===");
+                        System.out.println("");
+                        System.out.println("");
+                    }
                 }
             }
             round += 1;
