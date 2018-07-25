@@ -10,13 +10,13 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Введите количество игроков: ");
-        numbersOfPlayer = sc.nextInt();
+        numbersOfPlayer = sc.nextInt();                         //задаем в консоли количесвто игроков
 
         Game game = new Game();
 
-        game.initPlayers();
-        game.showPlayers();
-        game.whoIsWin();
+        game.initPlayers();            //Запуск метода в котором даем имена игрокам
+        game.showPlayers();            // Показ всех игроков
+        game.whoIsWin();               // Определение победителя
 
 
 

@@ -1,11 +1,10 @@
 package inko.steinherz;
 
 class Player {
-    private int numberOf;
-    private String namePlayer;
-    private String uefaDice;
-    private boolean isWinner = false;
-    private boolean inGame = true;
+    private int numberOf;               //номер игрока
+    private String namePlayer;          //Имя игрока
+    private String uefaDice;            //Хранит что выкинул игрок (камень, ножницы, бумага)
+    private boolean inGame = true;      //Состояние игрока: в игре или нет
 
     int getNumberOf() {
         return numberOf;
@@ -27,7 +26,7 @@ class Player {
         return uefaDice;
     }
 
-    void setUefaDice(int uefaDice) {
+    void setUefaDice(int uefaDice) {            //В зависимости от рандомного чила записывает что кинул игрок
         switch (uefaDice) {
             case 0:
                 this.uefaDice = "stone";
@@ -41,15 +40,9 @@ class Player {
         }
     }
 
-    boolean isWinner() {
-        return isWinner;
-    }
 
-    void setWinner(boolean winner) {
-        isWinner = winner;
-    }
 
-    public boolean isInGame() {
+    boolean isInGame() {
         return inGame;
     }
 
